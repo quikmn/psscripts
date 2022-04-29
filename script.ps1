@@ -29,7 +29,6 @@ $arglist0 = @(
 
 foreach ($i in $array0) {
   $arglist0[2] = $i
-  $arglist0}
     start-process -wait -nonewwindow -filepath msiexec.exe -argumentlist $argslist0
   }
 }
