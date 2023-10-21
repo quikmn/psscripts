@@ -1,4 +1,3 @@
-# Advent Of Code 2022 Day 01
 $Input = get-content -path .\input.txt
 
 $ArrList = [System.Collections.ArrayList]@()
@@ -25,4 +24,17 @@ foreach ($Item in $ArrList) {
     }
 }
 
+$Top3 = $Results | Sort-Object -Descending | Select-Object -First 3
+
+$Str = ""
+$Top3 | Foreach-Object {
+    $Str = $Str + "$_ + "
+    $Tr = $Str -replace ".{2}$"
+}
+$Res = Invoke-Expression $Tr
+
+# Result Part 1
 $Results | Measure-Object -Maximum | Select-Object -ExpandProperty Maximum
+
+# Result Part 2
+$Res
