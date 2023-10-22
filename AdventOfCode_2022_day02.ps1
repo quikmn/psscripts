@@ -23,8 +23,8 @@ function FindWinningMove {
         [string]$param1
     )
     $winningmove = @{
-        A = "B" # rock - winning move is     B - paper
-        B = "C" # paper - winning move is    C - scissors
+        A = "B" # rock     - winning move is B - paper
+        B = "C" # paper    - winning move is C - scissors
         C = "A" # scissors - winning move is A - rock
     }
     $output = $winningmove[$param1]
@@ -66,7 +66,7 @@ function FindMyScore {
         D = '3'
         L = '0'
     }
-    $choiceScore = [int]$fms[$param1]
+    $choiceScore    = [int]$fms[$param1]
     $gameStateScore = [int]$tgs[$param2]
 
     $output = $choiceScore + $gameStateScore
@@ -105,9 +105,9 @@ foreach ($line in $input) {
     $meraw  = $line.Substring(2,1)
     $me     = ConvertMyMove -param1 $meraw
 
-    $result = FindGameState -param1 $op -param2 $me
-    $mypoints = FindMyScore -param1 $me -param2 $result
-    $null = $mypointsarray.add($mypoints)
+    $result     = FindGameState -param1 $op -param2 $me
+    $mypoints   = FindMyScore -param1 $me -param2 $result
+    $null       = $mypointsarray.add($mypoints)
 }
 
 # part 1 answer
@@ -122,24 +122,24 @@ foreach ($line in $input) {
     switch ($myinstrux) {
         "X" {
                 # instrux lose
-                $mymove = FindLosingMove -param1 $op
-                $result = FindGameState -param1 $op -param2 $mymove
-                $mypoints = FindMyScore -param1 $mymove -param2 $result
-                $null = $mypointsarray2.add($mypoints)
+                $mymove     = FindLosingMove -param1 $op
+                $result     = FindGameState -param1 $op -param2 $mymove
+                $mypoints   = FindMyScore -param1 $mymove -param2 $result
+                $null       = $mypointsarray2.add($mypoints)
             } 
         "Y" {
                 # instrux draw
-                $mymove = $op
-                $result = FindGameState -param1 $op -param2 $mymove
-                $mypoints = FindMyScore -param1 $mymove -param2 $result
-                $null = $mypointsarray2.add($mypoints)
+                $mymove     = $op
+                $result     = FindGameState -param1 $op -param2 $mymove
+                $mypoints   = FindMyScore -param1 $mymove -param2 $result
+                $null       = $mypointsarray2.add($mypoints)
             }
         "Z" {
                 # instrux win
-                $mymove = FindWinningMove -param1 $op
-                $result = FindGameState -param1 $op -param2 $mymove
-                $mypoints = FindMyScore -param1 $mymove -param2 $result
-                $null = $mypointsarray2.add($mypoints)
+                $mymove     = FindWinningMove -param1 $op
+                $result     = FindGameState -param1 $op -param2 $mymove
+                $mypoints   = FindMyScore -param1 $mymove -param2 $result
+                $null       = $mypointsarray2.add($mypoints)
             }
     }
 }
